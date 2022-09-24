@@ -8,7 +8,12 @@
     "build": "tsc",
     "start": "node dist/src/server.js",
     "dev": "nodemon src/server.ts",
-    "test": "cross-env jest --no-cache"
+    "prisma-prod": "prisma migrate deploy",
+    "prisma-test": "dotenv -e .env.test prisma migrate reset",
+    "test": "cross-env dotenv -e .env.test prisma migrate dev -n reset && dotenv -e .env.test jest --no-cache"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
   },
   "keywords": [],
   "author": "",
