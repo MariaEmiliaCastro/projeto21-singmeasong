@@ -1,10 +1,14 @@
-import jest from 'jest';
 import supertest from 'supertest';
 import app from '../../src/app';
 import { faker } from '@faker-js/faker';
 import { prisma } from '../../src/database';
+import scenarioFactory from '../factories/scenarioFactory';
 
 const request = supertest(app);
+
+beforeEach(async () => {
+    await scenarioFactory.deleteAllData();
+})
 
 describe ('Rota POST /recommendations', () =>{
 
@@ -36,5 +40,5 @@ describe ('Rota POST /recommendations', () =>{
 
 afterAll(async () => {
     // do something after all tests
-    await prisma.$disconnect();
-  });
+    await scenarioFactory.disconnectPrisma();
+});
