@@ -1,5 +1,9 @@
 import { faker } from '@faker-js/faker';
 
+beforeEach( async () => {
+  await cy.request('POST', 'http://localhost:5000/reset-database', {})
+})
+
 describe('Testa a adição de uma recomendação', () => {
   it('Deve ser capaz de adicionar uma recomendação nova', () => {
     const name = faker.name.fullName();
@@ -13,6 +17,8 @@ describe('Testa a adição de uma recomendação', () => {
     cy.get('[data-cy="createRecommendationBtn"]').click();
 
     cy.wait('@createRecommendation');
+
+    cy.get('div').contains(name);
   });
 
   it('Não deve ser capaz de adicionar uma recomendação duplicada', () =>{
@@ -33,5 +39,6 @@ describe('Testa a adição de uma recomendação', () => {
           });
       })
     })
-  })
+  });
+
 })
