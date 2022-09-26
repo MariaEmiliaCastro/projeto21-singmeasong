@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/src/server.js",
-    "dev": "nodemon src/server.ts",
+    "dev": "cross-env dotenv -e .env.test nodemon src/server.ts",
     "prisma-prod": "prisma migrate deploy",
     "prisma-test": "dotenv -e .env.test prisma migrate reset",
     "test": "cross-env dotenv -e .env.test prisma migrate dev -n reset && dotenv -e .env.test -- jest -i --coverage",
