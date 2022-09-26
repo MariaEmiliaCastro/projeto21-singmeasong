@@ -6,7 +6,7 @@ beforeEach( async () => {
 
 describe('Testa a rota de top', () => {
 
-    it('Deve ir para a rota /random ao clicar no botão random', () => {
+    it('Deve ir para a rota /top ao clicar no botão Top', () => {
         cy.AddRecommendation();
         cy.AddRecommendation();
         cy.visit('http://localhost:3000/');
@@ -14,7 +14,5 @@ describe('Testa a rota de top', () => {
         cy.get("div").contains("Top").click();
 
         cy.url().should('include', '/top');
-
-
     });
 })
