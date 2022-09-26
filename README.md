@@ -20,3 +20,15 @@ O projeto Sing me a Song tem o objetivo de proporcionar o compartilhamento anôn
  npm build
  npm start
  ```
+## Tecnologias utilizadas
+ 
+### Back-End
+- Node
+- TypeScript
+- Express
+- Jest
+- PostgreSQL
+
+### Front-End
+- React.js
+- Cypress
