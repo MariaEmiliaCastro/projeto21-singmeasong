@@ -13,4 +13,14 @@ describe('Testa a rota de top', () => {
 
         cy.url().should('include', '/random');
     });
+
+    it('Deve haver uma recomendação na tela', () => {
+        cy.AddRecommendation();
+        cy.AddRecommendation();
+        cy.AddRecommendation();
+        cy.AddRecommendation();
+        
+        cy.visit('http://localhost:3000/random');
+        cy.get('[data-cy="upvote-arrow"]').click();
+    });
 })

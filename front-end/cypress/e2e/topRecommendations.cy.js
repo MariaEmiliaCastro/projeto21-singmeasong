@@ -15,4 +15,10 @@ describe('Testa a rota de top', () => {
 
         cy.url().should('include', '/top');
     });
+
+    it('Deve haver uma recomendação na tela', () => {
+        cy.AddRecommendation();
+        cy.visit('http://localhost:3000/top');
+        cy.get('[data-cy="upvote-arrow"]').click();
+    })
 })
